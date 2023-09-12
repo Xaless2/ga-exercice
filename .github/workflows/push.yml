@@ -1,0 +1,23 @@
+name: Create and Publish Branches
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  create-branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Create dev branch
+        run: git branch dev && git push origin dev
+
+      - name: Create staging branch
+        run: git branch staging && git push origin staging
+
+      - name: Create feat/feature-1 branch
+        run: git branch feat/feature-1 && git push origin feat/feature-1
